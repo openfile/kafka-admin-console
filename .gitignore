@@ -28,7 +28,7 @@ $RECYCLE.BIN
 
 #==================== IDEA IntelliJ
 .idea
-.iml
+*.iml
 *.iws
 /out/
 .idea_modules
