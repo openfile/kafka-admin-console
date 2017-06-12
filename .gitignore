@@ -80,7 +80,7 @@ mvnw
 mvnw.bat
 
 #==================== Play framework
-bin/
+/bin
 /db
 .eclipse
 /lib/
@@ -90,7 +90,7 @@ bin/
 /target
 tmp/
 test-result
-server.pid
+*.pid
 *.eml
 /dist/
 .cache
