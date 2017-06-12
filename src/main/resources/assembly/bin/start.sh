@@ -1,16 +1,15 @@
 #!/bin/sh
 
 #------------------------- environment variabls -------------------------
-NAME="application"
 PROG="$0"
 PROGDIR=`dirname "$PROG"`
 HOME_FOLDER=`cd "$PROGDIR/.." >/dev/null; pwd`
-PID_FILE="$HOME_FOLDER/bin/$NAME.pid"
 BIN_FOLDER="$HOME_FOLDER/bin"
 LIB_FOLDER="$HOME_FOLDER/lib"
 CONF_FOLDER="$HOME_FOLDER/conf"
 
 . "$CONF_FOLDER/config.sh"
+PID_FILE="$HOME_FOLDER/bin/$NAME.pid"
 
 if [ $JAVA_HOME ]
 then
@@ -26,12 +25,14 @@ then
     exit 1
 fi
 
+APP_JAR="$LIB_FOLDER/$PROG_NAME"
+
 PID=$(cat "${PID_FILE}");
 if [ -z "${PID}" ]; then
     echo "INFO: Starting $NAME"
     echo "INFO: PID file {$PID_FILE}"
     echo "INFO: Using $JAVA_BIN as Java VM"
-    # $JAVA_BIN -server $JAVA_OPTS com.hazelcast.core.server.StartServer $PROG_ARGS &
+    # $JAVA_BIN -server $JAVA_OPTS $APP_JAR $PROG_ARGS &
     # echo $! > ${PID_FILE}
     echo "INFO: Started $NAME at `date`"
     echo "=========================================================================================="
